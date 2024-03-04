@@ -48,6 +48,7 @@ android {
             includeAndroidResources = true
         }
     }
+    namespace 'org.ds.simple.ink.launcher'
 }
 
 dependencies {
