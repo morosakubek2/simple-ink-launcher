@@ -62,11 +62,14 @@ public class LauncherMainActivity extends BaseLauncherActivity {
         applicationDrawerToolbar.setTotalItemsCount(applicationDrawer.getCount());
         applicationDrawerToolbar.showWifiSwitch(applicationSettings.showWifiSwitch());
         applicationDrawerToolbar.showBacklightSwitch(applicationSettings.showBacklightSwitch());
+        applicationDrawerToolbar.showClock(applicationSettings.showClock());
+        applicationDrawerToolbar.showTotalItemCount(applicationSettings.showTotalItemCount());
 
         applicationDrawer.registerOnTotalCountChangeListener(applicationDrawerToolbar);
         applicationSettings.registerWifiSwitchEnabledChangeListener(applicationDrawerToolbar);
         applicationSettings.registerBacklightSwitchEnabledChangeListener(applicationDrawerToolbar);
         applicationSettings.registerClockEnabledChangeListener(applicationDrawerToolbar);
+        applicationSettings.registerTotalItemCountEnabledChangeListener(applicationDrawerToolbar);
 
         toolbarPositioner = new ToolbarPositioner(this);
         toolbarPositioner.positionTo(applicationSettings.getToolbarLocation());

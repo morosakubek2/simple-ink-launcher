@@ -115,6 +115,15 @@
             app:layout="@layout/preference_custom"
             />
 
+        <CheckBoxPreference
+            app:key="@string/show_total_item_count_key"
+            app:title="@string/show_total_item_count_title"
+            app:summary="@string/show_total_item_count_summary"
+            app:defaultValue="@bool/show_total_item_count_default_value"
+            app:icon="@drawable/ic_total_item_count"
+            app:layout="@layout/preference_custom"
+            />
+
         <org.ds.simple.ink.launcher.settings.preference.SingleChoiceListPreference
             app:key="@string/toolbar_location_key"
             app:title="@string/toolbar_location_title"

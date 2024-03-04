@@ -98,7 +98,12 @@
     <string name="show_clock_key" translatable="false">showClock</string>
     <string name="show_clock_title">Show clock</string>
     <string name="show_clock_summary">Add clock to launcher toolbar</string>
-    <bool name="show_clock_default_value">true</bool>
+    <bool name="show_clock_default_value">false</bool>
+
+    <string name="show_total_item_count_key" translatable="false">showTotalItemCount</string>
+    <string name="show_total_item_count_title">Show total item count</string>
+    <string name="show_total_item_count_summary">Add total item count to launcher toolbar</string>
+    <bool name="show_total_item_count_default_value">true</bool>
 
     <string name="toolbar_location_key" translatable="false">toolbarLocation</string>
     <string name="toolbar_location_title">Toolbar location</string>
