@@ -16,13 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-apply plugin: 'com.android.application'
+plugins {
+    id "com.android.application"
+}
 
 android {
-    compileSdkVersion 28
     defaultConfig {
         applicationId "org.ds.simple.ink.launcher"
-        minSdkVersion 14
+        compileSdk 34
+        minSdkVersion 21
+        //noinspection ExpiredTargetSdkVersion we don't care about google play
         targetSdkVersion 28
         versionCode 1
         versionName "1.2"
@@ -54,13 +57,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // AndroidX
-    implementation 'androidx.preference:preference:1.1.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     // Lombok
-    implementation 'org.projectlombok:lombok:1.18.28'
-    annotationProcessor 'org.projectlombok:lombok:1.18.28'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+    //noinspection AnnotationProcessorOnCompilePath we actually need this
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
     // Third-party
+    //noinspection GradleDependency we want the android variant
     implementation 'com.google.guava:guava:27.1-android'
     // Testing
     testImplementation 'junit:junit:4.12'

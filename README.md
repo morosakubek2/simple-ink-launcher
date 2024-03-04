@@ -11,7 +11,7 @@ The project started as an idea for a simple replacement of the standard InkBook 
 - Wi-Fi, backlight toggles available on the launcher toolbar
 
 # Compatibility
-Designed to look nice on InkBook devices but technically compatible with any Android-based reader running **version 4.2+**
+Designed to look nice on InkBook devices but technically compatible with any Android-based reader running version 5.0 or later.
 
 # References
 Thanks [Font-Awesome](https://github.com/FortAwesome/Font-Awesome) project for the nice icons used in this application
