@@ -34,7 +34,8 @@ import lombok.val;
 
 public class ApplicationDrawerToolbar extends RelativeLayout implements ApplicationDrawer.OnTotalItemCountChangeListener,
                                                                         ApplicationSettings.OnWifiSwitchEnabledChangeListener,
-                                                                        ApplicationSettings.OnBacklightSwitchEnabledChangeListener {
+                                                                        ApplicationSettings.OnBacklightSwitchEnabledChangeListener,
+                                                                        ApplicationSettings.OnClockEnabledChangeListener {
     private final ViewCache children = new ViewCache(this);
 
     public ApplicationDrawerToolbar(final Context context, final AttributeSet attrs) {
@@ -56,6 +57,11 @@ public class ApplicationDrawerToolbar extends RelativeLayout implements Applicat
     public void showBacklightSwitch(final boolean visible) {
         val visibility = getVisibilityForState(visible);
         children.getView(R.id.backlight_switch).setVisibility(visibility);
+    }
+
+    public void showClock(final boolean visible) {
+        val visibility = getVisibilityForState(visible);
+        children.getView(R.id.clock).setVisibility(visibility);
     }
 
     private int getVisibilityForState(final boolean visible) {
@@ -82,8 +88,12 @@ public class ApplicationDrawerToolbar extends RelativeLayout implements Applicat
         showBacklightSwitch(whetherEnabled);
     }
 
-    private class OnLauncherSettingsListener implements View.OnClickListener {
+    @Override
+    public void clockEnabled(final boolean whetherEnabled) {
+        showClock(whetherEnabled);
+    }
 
+    private class OnLauncherSettingsListener implements View.OnClickListener {
         @Override
         public void onClick(final View launchSettingsButton) {
             val myIntent = new Intent(getContext(), LauncherSettingsActivity.class);

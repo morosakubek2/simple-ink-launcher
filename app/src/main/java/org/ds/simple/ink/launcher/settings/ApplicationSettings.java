@@ -90,6 +90,15 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         void backlightSwitchEnabled(final boolean whetherEnabled);
     }
 
+    public interface OnClockEnabledChangeListener {
+
+
+        /**
+         * Called after toolbar's clock is enabled or disabled.
+         */
+        void clockEnabled(final boolean whetherEnabled);
+    }
+
     public interface OnToolbarLocationChangeListener {
 
         /**
@@ -134,6 +143,9 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     private final String showBacklightSwitchKey;
     private final boolean showBacklightSwitchDefault;
 
+    private final String showClockKey;
+    private final boolean showClockDefault;
+
     private final String toolbarLocationKey;
     private final String toolbarLocationDefault;
 
@@ -152,6 +164,7 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     private final Map<OnWifiSwitchEnabledChangeListener, Object> wifiSwitchEnabledChangeListeners = new WeakHashMap<>();
     private final Map<OnMainScreenSettingsChangeListener, Object> mainScreenSettingsChangeListeners = new WeakHashMap<>();
     private final Map<OnBacklightSwitchEnabledChangeListener, Object> backlightSwitchEnabledChangeListeners = new WeakHashMap<>();
+    private final Map<OnClockEnabledChangeListener, Object> clockEnabledChangeListeners = new WeakHashMap<>();
 
     private ApplicationSettings(@NonNull final Resources resources, @NonNull final SharedPreferences sharedPreferences) {
         this.sortingStrategies = new SortingStrategies(this::getDefaultReaderApplication);
@@ -175,6 +188,9 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
 
         this.showBacklightSwitchKey = resources.getString(R.string.show_backlight_switch_key);
         this.showBacklightSwitchDefault = resources.getBoolean(R.bool.show_backlight_switch_default_value);
+
+        this.showClockKey = "showClock";
+        this.showClockDefault = resources.getBoolean(R.bool.show_clock_default_value);
 
         this.toolbarLocationKey = resources.getString(R.string.toolbar_location_key);
         this.toolbarLocationDefault = resources.getString(R.string.toolbar_location_default_value);
@@ -203,6 +219,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
 
     public boolean showBacklightSwitch() {
         return sharedPreferences.getBoolean(showBacklightSwitchKey, showBacklightSwitchDefault);
+    }
+
+    public boolean showClock() {
+        return sharedPreferences.getBoolean(showClockKey, showClockDefault);
     }
 
     public boolean isReaderApplicationAutoStartEnabled() {
@@ -256,6 +276,11 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     @SuppressWarnings("ConstantConditions")
     public void registerBacklightSwitchEnabledChangeListener(@NonNull final OnBacklightSwitchEnabledChangeListener listener) {
         backlightSwitchEnabledChangeListeners.put(listener, null);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public void registerClockEnabledChangeListener(@NonNull final OnClockEnabledChangeListener listener) {
+        clockEnabledChangeListeners.put(listener, null);
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -316,6 +341,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
             notifyBacklightSwitchEnabledChanged(showBacklightSwitch());
         }
 
+        if (key.equals(showClockKey)) {
+            notifyClockEnabledChanged(showClock());
+        }
+
         if (mainScreenPreferenceKeys.contains(key)) {
             notifyMainScreenPreferencesChanged(getMainScreenPreferences());
         }
@@ -352,6 +381,12 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     private void notifyBacklightSwitchEnabledChanged(final boolean whetherEnabled) {
         for (val listener : backlightSwitchEnabledChangeListeners.keySet()) {
             listener.backlightSwitchEnabled(whetherEnabled);
+        }
+    }
+
+    private void notifyClockEnabledChanged(final boolean whetherEnabled) {
+        for (val listener : clockEnabledChangeListeners.keySet()) {
+            listener.clockEnabled(whetherEnabled);
         }
     }
 

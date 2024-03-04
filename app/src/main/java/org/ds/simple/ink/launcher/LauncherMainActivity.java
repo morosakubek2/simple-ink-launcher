@@ -66,6 +66,7 @@ public class LauncherMainActivity extends BaseLauncherActivity {
         applicationDrawer.registerOnTotalCountChangeListener(applicationDrawerToolbar);
         applicationSettings.registerWifiSwitchEnabledChangeListener(applicationDrawerToolbar);
         applicationSettings.registerBacklightSwitchEnabledChangeListener(applicationDrawerToolbar);
+        applicationSettings.registerClockEnabledChangeListener(applicationDrawerToolbar);
 
         toolbarPositioner = new ToolbarPositioner(this);
         toolbarPositioner.positionTo(applicationSettings.getToolbarLocation());

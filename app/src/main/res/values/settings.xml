@@ -95,6 +95,11 @@
     <string name="show_wifi_switch_summary">Add Wi-Fi switch to launcher toolbar</string>
     <bool name="show_wifi_switch_default_value">false</bool>
 
+    <string name="show_clock_key" translatable="false">showClock</string>
+    <string name="show_clock_title">Show clock</string>
+    <string name="show_clock_summary">Add clock to launcher toolbar</string>
+    <bool name="show_clock_default_value">true</bool>
+
     <string name="toolbar_location_key" translatable="false">toolbarLocation</string>
     <string name="toolbar_location_title">Toolbar location</string>
     <string name="toolbar_location_summary">Define where toolbar will be located on the screen</string>
