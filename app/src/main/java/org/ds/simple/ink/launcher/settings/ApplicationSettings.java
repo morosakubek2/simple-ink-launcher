@@ -99,6 +99,15 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         void clockEnabled(final boolean whetherEnabled);
     }
 
+    public interface OnBatteryLevelEnabledChangeListener {
+
+
+        /**
+         * Called after toolbar's clock is enabled or disabled.
+         */
+        void batteryLevelEnabled(final boolean whetherEnabled);
+    }
+
     public interface OnTotalItemCountEnabledChangeListener {
 
 
@@ -130,6 +139,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         }
     }
 
+    public interface OnBatteryLevelChangeListener {
+        void batteryLevelChanged(final int pct, final boolean isCharging);
+    }
+
     private final SortingStrategies sortingStrategies;
     private final SharedPreferences sharedPreferences;
 
@@ -155,6 +168,9 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     private final String showClockKey;
     private final boolean showClockDefault;
 
+    private final String showBatteryLevelKey;
+    private final boolean showBatteryLevelDefault;
+
     private final String showTotalItemCountKey;
     private final boolean showTotalItemCountDefault;
 
@@ -177,6 +193,8 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     private final Map<OnMainScreenSettingsChangeListener, Object> mainScreenSettingsChangeListeners = new WeakHashMap<>();
     private final Map<OnBacklightSwitchEnabledChangeListener, Object> backlightSwitchEnabledChangeListeners = new WeakHashMap<>();
     private final Map<OnClockEnabledChangeListener, Object> clockEnabledChangeListeners = new WeakHashMap<>();
+    private final Map<OnBatteryLevelEnabledChangeListener, Object> batteryLevelEnabledChangeListeners = new WeakHashMap<>();
+    private final Map<OnBatteryLevelChangeListener, Object> batteryLevelChangeListeners = new WeakHashMap<>();
     private final Map<OnTotalItemCountEnabledChangeListener, Object> totalItemCountEnabledChangeListeners = new WeakHashMap<>();
 
     private ApplicationSettings(@NonNull final Resources resources, @NonNull final SharedPreferences sharedPreferences) {
@@ -204,6 +222,9 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
 
         this.showClockKey = "showClock";
         this.showClockDefault = resources.getBoolean(R.bool.show_clock_default_value);
+
+        this.showBatteryLevelKey = "batteryLevel";
+        this.showBatteryLevelDefault = resources.getBoolean(R.bool.show_battery_level_default_value);
 
         this.showTotalItemCountKey = "showTotalItemCount";
         this.showTotalItemCountDefault = resources.getBoolean(R.bool.show_total_item_count_default_value);
@@ -239,6 +260,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
 
     public boolean showClock() {
         return sharedPreferences.getBoolean(showClockKey, showClockDefault);
+    }
+
+    public boolean showBatteryLevel() {
+        return sharedPreferences.getBoolean(showBatteryLevelKey, showBatteryLevelDefault);
     }
 
     public boolean showTotalItemCount() {
@@ -303,6 +328,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         clockEnabledChangeListeners.put(listener, null);
     }
 
+    public void registerBatteryLevelEnabledChangeListener(@NonNull final OnBatteryLevelEnabledChangeListener listener) {
+        batteryLevelEnabledChangeListeners.put(listener, null);
+    }
+
     @SuppressWarnings("ConstantConditions")
     public void registerTotalItemCountEnabledChangeListener(@NonNull final OnTotalItemCountEnabledChangeListener listener) {
         totalItemCountEnabledChangeListeners.put(listener, null);
@@ -321,6 +350,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     @SuppressWarnings("ConstantConditions")
     public void registerMainScreenPreferencesChangeListener(@NonNull final OnMainScreenSettingsChangeListener listener) {
         mainScreenSettingsChangeListeners.put(listener, null);
+    }
+
+    public void registerBatteryLevelChangeListener(@NonNull final OnBatteryLevelChangeListener listener) {
+        batteryLevelChangeListeners.put(listener, null);
     }
 
     public void notifyApplicationRemoved(final String packageName) {
@@ -419,6 +452,12 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         }
     }
 
+    private void notifyBatteryLevelEnabledChanged(final boolean whetherEnabled) {
+        for (val listener : batteryLevelEnabledChangeListeners.keySet()) {
+            listener.batteryLevelEnabled(whetherEnabled);
+        }
+    }
+
     private void notifyTotalItemCountEnabledChanged(final boolean whetherEnabled) {
         for (val listener : totalItemCountEnabledChangeListeners.keySet()) {
             listener.totalItemCountEnabled(whetherEnabled);
@@ -434,6 +473,12 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     private void notifyMainScreenPreferencesChanged(final MainScreenPreferences newPreferences) {
         for (val listener : mainScreenSettingsChangeListeners.keySet()) {
             listener.mainScreenPreferencesChanged(newPreferences);
+        }
+    }
+
+    public void notifyBatteryLevelChanged(final int pct, final boolean isCharging) {
+        for (val listener : batteryLevelChangeListeners.keySet()) {
+            listener.batteryLevelChanged(pct, isCharging);
         }
     }
 

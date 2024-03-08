@@ -116,6 +116,15 @@
             />
 
         <CheckBoxPreference
+            app:key="@string/show_battery_level_key"
+            app:title="@string/show_battery_level_title"
+            app:summary="@string/show_battery_level_summary"
+            app:defaultValue="@bool/show_battery_level_default_value"
+            app:icon="@drawable/ic_battery"
+            app:layout="@layout/preference_custom"
+            />
+
+        <CheckBoxPreference
             app:key="@string/show_total_item_count_key"
             app:title="@string/show_total_item_count_title"
             app:summary="@string/show_total_item_count_summary"

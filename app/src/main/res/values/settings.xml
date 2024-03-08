@@ -100,6 +100,11 @@
     <string name="show_clock_summary">Add clock to launcher toolbar</string>
     <bool name="show_clock_default_value">false</bool>
 
+    <string name="show_battery_level_key" translatable="false">showBatteryLevel</string>
+    <string name="show_battery_level_title">Show battery level</string>
+    <string name="show_battery_level_summary">Add battery level to launcher toolbar</string>
+    <bool name="show_battery_level_default_value">false</bool>
+
     <string name="show_total_item_count_key" translatable="false">showTotalItemCount</string>
     <string name="show_total_item_count_title">Show total item count</string>
     <string name="show_total_item_count_summary">Add total item count to launcher toolbar</string>

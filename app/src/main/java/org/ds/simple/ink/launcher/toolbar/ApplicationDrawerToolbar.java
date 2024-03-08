@@ -33,9 +33,11 @@ import org.ds.simple.ink.launcher.common.ViewCache;
 import lombok.val;
 
 public class ApplicationDrawerToolbar extends RelativeLayout implements ApplicationDrawer.OnTotalItemCountChangeListener,
+                                                                        ApplicationSettings.OnBatteryLevelChangeListener,
                                                                         ApplicationSettings.OnWifiSwitchEnabledChangeListener,
                                                                         ApplicationSettings.OnBacklightSwitchEnabledChangeListener,
                                                                         ApplicationSettings.OnClockEnabledChangeListener,
+                                                                        ApplicationSettings.OnBatteryLevelEnabledChangeListener,
                                                                         ApplicationSettings.OnTotalItemCountEnabledChangeListener {
     private final ViewCache children = new ViewCache(this);
 
@@ -65,6 +67,11 @@ public class ApplicationDrawerToolbar extends RelativeLayout implements Applicat
         children.getView(R.id.clock).setVisibility(visibility);
     }
 
+    public void showBatteryLevel(final boolean visible) {
+        val visibility = getVisibilityForState(visible);
+        children.getView(R.id.battery_level).setVisibility(visibility);
+    }
+
     public void showTotalItemCount(final boolean visible) {
         val visibility = getVisibilityForState(visible);
         children.getView(R.id.total_items_count).setVisibility(visibility);
@@ -77,6 +84,12 @@ public class ApplicationDrawerToolbar extends RelativeLayout implements Applicat
     public void setTotalItemsCount(final int itemsCount) {
         val text = getResources().getString(R.string.total_item_count_label, itemsCount);
         children.getTextView(R.id.total_items_count).setText(text);
+    }
+
+    @Override
+    public void batteryLevelChanged(final int pct, final boolean isCharging) {
+        val levelString = (isCharging ? "⚡" : "") + pct + "%";
+        children.getTextView(R.id.battery_level).setText(levelString);
     }
 
     @Override
@@ -97,6 +110,11 @@ public class ApplicationDrawerToolbar extends RelativeLayout implements Applicat
     @Override
     public void clockEnabled(final boolean whetherEnabled) {
         showClock(whetherEnabled);
+    }
+
+    @Override
+    public void batteryLevelEnabled(final boolean whetherEnabled) {
+        showBatteryLevel(whetherEnabled);
     }
 
     @Override
