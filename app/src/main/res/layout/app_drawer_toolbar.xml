@@ -17,88 +17,73 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <TextClock
         android:id="@+id/clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="2dp"
-        android:layout_centerVertical="true"
         android:format12Hour="hh:mm"
-	android:textAppearance="?android:attr/textAppearanceMedium"
-	/>
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageButton android:id="@+id/open_launcher_settings"
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <ImageButton
+        android:id="@+id/open_launcher_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_launcher_settings"
-        android:padding="8dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-	android:layout_toEndOf="@id/clock"
-	android:layout_toRightOf="@id/clock"
         android:contentDescription="@null"
-        />
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher_settings" />
 
     <org.ds.simple.ink.launcher.toolbar.WifiSwitch
         android:id="@+id/wifi_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:padding="8dp"
         android:layout_margin="3dp"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/backlight_switch"
-        android:layout_toLeftOf="@id/backlight_switch"
         android:contentDescription="@null"
-        />
+        android:padding="8dp"
+        android:scaleType="fitCenter" />
 
     <org.ds.simple.ink.launcher.toolbar.BacklightSwitch
         android:id="@+id/backlight_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:padding="8dp"
         android:layout_margin="3dp"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/total_items_count"
-        android:layout_toLeftOf="@id/total_items_count"
         android:contentDescription="@null"
-        />
+        android:padding="8dp"
+        android:scaleType="fitCenter" />
 
-    <TextView android:id="@+id/battery_level"
+    <TextView
+        android:id="@+id/battery_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="2dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView android:id="@+id/total_items_count"
+    <TextView
+        android:id="@+id/total_items_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="2dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        />
-</merge>
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+</LinearLayout>
