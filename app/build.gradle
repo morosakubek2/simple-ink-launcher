@@ -63,6 +63,8 @@ dependencies {
     //noinspection AnnotationProcessorOnCompilePath we actually need this
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    //noinspection AnnotationProcessorOnCompilePath we actually need this
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
     // Third-party
     //noinspection GradleDependency we want the android variant
