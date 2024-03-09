@@ -24,7 +24,7 @@ android {
     defaultConfig {
         applicationId "org.ds.simple.ink.launcher"
         compileSdk 34
-        minSdkVersion 21
+        minSdkVersion 14
         //noinspection ExpiredTargetSdkVersion we don't care about google play
         targetSdkVersion 28
         versionCode 1
@@ -58,7 +58,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // AndroidX
     implementation 'androidx.preference:preference:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //noinspection GradleDependency later versions require multidex
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     // Lombok
     //noinspection AnnotationProcessorOnCompilePath we actually need this
     compileOnly 'org.projectlombok:lombok:1.18.30'
