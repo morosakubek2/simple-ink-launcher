@@ -41,7 +41,6 @@ import java.util.WeakHashMap;
 import lombok.NonNull;
 import lombok.Synchronized;
 import lombok.val;
-import lombok.var;
 
 import static android.content.Intent.ACTION_MAIN;
 import static android.content.Intent.CATEGORY_LAUNCHER;
@@ -108,7 +107,7 @@ public final class ApplicationRepository implements IconsThemeRepository.OnIcons
      */
     @Synchronized
     public List<ApplicationInfo> listAll(final boolean forceNotFromCache) {
-        var resolveInfos = resolveInfosCacheRef.get();
+        List<ResolveInfo> resolveInfos = resolveInfosCacheRef.get();
         if (resolveInfos == null || forceNotFromCache) {
 
             if (forceNotFromCache) {
