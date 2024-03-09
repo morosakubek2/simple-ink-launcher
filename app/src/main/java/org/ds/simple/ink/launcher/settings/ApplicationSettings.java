@@ -143,6 +143,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         void batteryLevelChanged(final int pct, final boolean isCharging);
     }
 
+    public interface OnWifiStateChangeListener {
+        void wifiStateChanged(final boolean isEnabled);
+    }
+
     private final SortingStrategies sortingStrategies;
     private final SharedPreferences sharedPreferences;
 
@@ -195,6 +199,7 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     private final Map<OnClockEnabledChangeListener, Object> clockEnabledChangeListeners = new WeakHashMap<>();
     private final Map<OnBatteryLevelEnabledChangeListener, Object> batteryLevelEnabledChangeListeners = new WeakHashMap<>();
     private final Map<OnBatteryLevelChangeListener, Object> batteryLevelChangeListeners = new WeakHashMap<>();
+    private final Map<OnWifiStateChangeListener, Object> wifiStateChangeListeners = new WeakHashMap<>();
     private final Map<OnTotalItemCountEnabledChangeListener, Object> totalItemCountEnabledChangeListeners = new WeakHashMap<>();
 
     private ApplicationSettings(@NonNull final Resources resources, @NonNull final SharedPreferences sharedPreferences) {
@@ -356,6 +361,10 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         batteryLevelChangeListeners.put(listener, null);
     }
 
+    public void registerWifiStateChangeListener(@NonNull final OnWifiStateChangeListener listener) {
+        wifiStateChangeListeners.put(listener, null);
+    }
+
     public void notifyApplicationRemoved(final String packageName) {
         if (getIconsTheme().equals(packageName)) {
             val edit = sharedPreferences.edit();
@@ -479,6 +488,12 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
     public void notifyBatteryLevelChanged(final int pct, final boolean isCharging) {
         for (val listener : batteryLevelChangeListeners.keySet()) {
             listener.batteryLevelChanged(pct, isCharging);
+        }
+    }
+
+    public void notifyWifiStateChanged(final boolean isEnabled) {
+        for (val listener : wifiStateChangeListeners.keySet()) {
+            listener.wifiStateChanged(isEnabled);
         }
     }
 

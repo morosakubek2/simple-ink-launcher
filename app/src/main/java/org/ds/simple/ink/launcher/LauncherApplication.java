@@ -23,7 +23,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.NetworkInfo;
 import android.os.BatteryManager;
+import android.net.wifi.WifiManager;
+
 
 import androidx.preference.PreferenceManager;
 
@@ -98,6 +101,10 @@ public class LauncherApplication extends Application {
         val batteryFilter = new IntentFilter();
         batteryFilter.addAction(ACTION_BATTERY_CHANGED);
         registerReceiver(new BatteryEventsReceiver(), batteryFilter);
+
+        val wifiStateFilter = new IntentFilter();
+        wifiStateFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        registerReceiver(new WifiEventsReceiver(), wifiStateFilter);
     }
 
     private class ApplicationEventsReceiver extends BroadcastReceiver {
@@ -123,6 +130,20 @@ public class LauncherApplication extends Application {
             boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
                     status == BatteryManager.BATTERY_STATUS_FULL;
             applicationSettings.notifyBatteryLevelChanged(pct, isCharging);
+        }
+    }
+
+    private class WifiEventsReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(final Context context, final Intent intent) {
+            boolean isEnabled = false;
+
+            NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+            if (info != null && info.isConnectedOrConnecting()) {
+                isEnabled = true;
+            }
+
+            applicationSettings.notifyWifiStateChanged(isEnabled);
         }
     }
 }

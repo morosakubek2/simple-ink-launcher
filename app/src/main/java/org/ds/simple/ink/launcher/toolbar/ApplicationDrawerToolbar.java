@@ -34,6 +34,7 @@ import lombok.val;
 
 public class ApplicationDrawerToolbar extends RelativeLayout implements ApplicationDrawer.OnTotalItemCountChangeListener,
                                                                         ApplicationSettings.OnBatteryLevelChangeListener,
+                                                                        ApplicationSettings.OnWifiStateChangeListener,
                                                                         ApplicationSettings.OnWifiSwitchEnabledChangeListener,
                                                                         ApplicationSettings.OnBacklightSwitchEnabledChangeListener,
                                                                         ApplicationSettings.OnClockEnabledChangeListener,
@@ -90,6 +91,12 @@ public class ApplicationDrawerToolbar extends RelativeLayout implements Applicat
     public void batteryLevelChanged(final int pct, final boolean isCharging) {
         val levelString = (isCharging ? "⚡" : "") + pct + "%";
         children.getTextView(R.id.battery_level).setText(levelString);
+    }
+
+    @Override
+    public void wifiStateChanged(final boolean isEnabled) {
+        val icon = isEnabled ? R.drawable.ic_wifi_on_toolbar : R.drawable.ic_wifi_off_toolbar;
+        children.getImageView(R.id.wifi_switch).setImageResource(icon);
     }
 
     @Override

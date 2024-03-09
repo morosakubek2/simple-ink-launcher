@@ -38,14 +38,7 @@ public class WifiSwitch extends AppCompatImageButton {
         super(context, attrs);
         val wifiToasts = new WifiToasts(context);
         val wifiManager = getWifiManager(context);
-        setImageBasedOn(wifiManager.isWifiEnabled());
         setOnClickListener(new WifiController(this, wifiToasts, wifiManager));
-    }
-
-    void setImageBasedOn(final boolean wifiState) {
-        setImageResource(wifiState
-                ? R.drawable.ic_wifi_on_toolbar
-                : R.drawable.ic_wifi_off_toolbar);
     }
 
     private WifiManager getWifiManager(final Context context) {
@@ -63,7 +56,6 @@ public class WifiSwitch extends AppCompatImageButton {
         @Override
         public void onClick(final View view) {
             val nextState = !wifiManager.isWifiEnabled();
-            wifiSwitch.setImageBasedOn(nextState);
             wifiManager.setWifiEnabled(nextState);
             wifiToasts.newToast(nextState).show();
         }

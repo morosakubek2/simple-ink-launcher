@@ -77,6 +77,7 @@ public class LauncherMainActivity extends BaseLauncherActivity {
         applicationSettings.registerToolbarLocationChangeListener(toolbarPositioner);
 
         applicationSettings.registerBatteryLevelChangeListener(applicationDrawerToolbar);
+        applicationSettings.registerWifiStateChangeListener(applicationDrawerToolbar);
     }
 
     @Override
