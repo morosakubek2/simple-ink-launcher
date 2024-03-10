@@ -34,6 +34,7 @@ import org.ds.simple.ink.launcher.apps.ApplicationRepository;
 import org.ds.simple.ink.launcher.apps.IconsThemeRepository;
 import org.ds.simple.ink.launcher.settings.ApplicationSettings;
 import org.ds.simple.ink.launcher.utils.IntentUtils;
+import org.ds.simple.ink.launcher.BuildConfig;
 
 import lombok.val;
 
@@ -49,6 +50,12 @@ public class LauncherApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Only included in debug because we don't restart after the crash
+        if (BuildConfig.BUILD_TYPE == "debug") {
+            Thread.setDefaultUncaughtExceptionHandler(new CrashHandler());
+        }
+
         PreferenceManager.setDefaultValues(this, R.xml.launcher_preferences, false);
 
         iconsThemeRepository = IconsThemeRepository.from(this);
