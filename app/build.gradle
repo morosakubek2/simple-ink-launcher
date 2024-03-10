@@ -38,6 +38,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // FIXME update before releasing
+            signingConfig signingConfigs.debug
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     outputFileName = "${applicationId}-${versionName}-${variant.buildType.name}.apk"
