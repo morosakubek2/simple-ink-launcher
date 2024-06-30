@@ -32,6 +32,7 @@
     android:clipToPadding="false"
     >
 
+    <!--suppress AndroidUnresolvableTag -->
     <androidx.preference.internal.PreferenceImageView
         android:id="@android:id/icon"
         android:layout_width="wrap_content"
@@ -62,6 +63,7 @@
             android:singleLine="true"
             />
 
+        <!--suppress AndroidUnresolvableTag -->
         <androidx.preference.UnPressableLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
