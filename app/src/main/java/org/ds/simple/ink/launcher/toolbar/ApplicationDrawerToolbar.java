@@ -64,8 +64,13 @@ public class ApplicationDrawerToolbar extends RelativeLayout implements Applicat
     }
 
     public void showClock(final boolean visible) {
-        val visibility = getVisibilityForState(visible);
-        children.getView(R.id.clock).setVisibility(visibility);
+        // TextClock is only supported from API 17 and up
+        if (android.os.Build.VERSION.SDK_INT >= 17) {
+            val visibility = getVisibilityForState(visible);
+            children.getView(R.id.clock).setVisibility(visibility);
+        } else {
+            // do nothing
+        }
     }
 
     public void showBatteryLevel(final boolean visible) {

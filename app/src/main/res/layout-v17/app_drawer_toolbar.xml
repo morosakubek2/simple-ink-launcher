@@ -24,6 +24,17 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
+    <TextClock
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="2dp"
+        android:format12Hour="h:mm"
+	android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
     <Space
         android:layout_width="0dp"
         android:layout_height="wrap_content"
