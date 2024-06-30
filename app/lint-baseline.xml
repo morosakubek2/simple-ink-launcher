@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.5.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.5.0)" variant="all" version="8.5.0">
+
+    <issue
+        id="InconsistentLayout"
+        message="The id &quot;clock&quot; in layout &quot;app_drawer_toolbar&quot; is missing from the following layout configurations: layout (present in layout-v17)"
+        errorLine1="        android:id=&quot;@+id/clock&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout-v17/app_drawer_toolbar.xml"
+            line="28"
+            column="9"
+            message="Occurrence in layout-v17"/>
+    </issue>
+
+    <issue
+        id="SimpleDateFormat"
+        message="To get local formatting use `getDateInstance()`, `getDateTimeInstance()`, or `getTimeInstance()`, or use `new SimpleDateFormat(String template, Locale locale)` with for example `Locale.US` for ASCII dates."
+        errorLine1="      SimpleDateFormat dateFormat = new SimpleDateFormat("
+        errorLine2="                                    ^">
+        <location
+            file="src/main/java/org/ds/simple/ink/launcher/CrashHandler.java"
+            line="31"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `parentActivityName` is only used in API level 16 and higher (current min is 14)"
+        errorLine1="            android:parentActivityName=&quot;.LauncherMainActivity&quot;/>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="55"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `parentActivityName` is only used in API level 16 and higher (current min is 14)"
+        errorLine1="            android:parentActivityName=&quot;.LauncherSettingsActivity&quot;/>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="59"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="NonConstantResourceId"
+        message="Resource IDs will be non-final by default in Android Gradle Plugin version 8.0, avoid using them in switch case statements"
+        errorLine1="            case R.id.hide_action:"
+        errorLine2="                 ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/ds/simple/ink/launcher/drawer/ItemActionModeListener.java"
+            line="73"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="NonConstantResourceId"
+        message="Resource IDs will be non-final by default in Android Gradle Plugin version 8.0, avoid using them in switch case statements"
+        errorLine1="            case R.id.delete_action:"
+        errorLine2="                 ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/ds/simple/ink/launcher/drawer/ItemActionModeListener.java"
+            line="76"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Resource references will not work correctly in images generated for this vector icon for API &lt; 21; check generated icon to make sure it looks acceptable"
+        errorLine1="    &lt;path android:fillColor=&quot;@android:color/white&quot; android:pathData=&quot;M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM12,20c-4.42,0 -8,-3.58 -8,-8s3.58,-8 8,-8 8,3.58 8,8 -3.58,8 -8,8z&quot;/>"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_clock.xml"
+            line="3"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Resource references will not work correctly in images generated for this vector icon for API &lt; 21; check generated icon to make sure it looks acceptable"
+        errorLine1="    &lt;path android:fillColor=&quot;@android:color/white&quot; android:pathData=&quot;M12.5,7H11v6l5.25,3.15 0.75,-1.23 -4.5,-2.67z&quot;/>"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_clock.xml"
+            line="5"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Resource references will not work correctly in images generated for this vector icon for API &lt; 21; check generated icon to make sure it looks acceptable"
+        errorLine1="    &lt;path android:fillColor=&quot;@android:color/white&quot; android:pathData=&quot;M13,12.5h1.5v1.5h-1.5z&quot;/>"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_total_item_count.xml"
+            line="3"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Resource references will not work correctly in images generated for this vector icon for API &lt; 21; check generated icon to make sure it looks acceptable"
+        errorLine1="    &lt;path android:fillColor=&quot;@android:color/white&quot; android:pathData=&quot;M13,10h1.5v1.5h-1.5z&quot;/>"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_total_item_count.xml"
+            line="5"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Resource references will not work correctly in images generated for this vector icon for API &lt; 21; check generated icon to make sure it looks acceptable"
+        errorLine1="    &lt;path android:fillColor=&quot;@android:color/white&quot; android:pathData=&quot;M19,3H5C3.9,3 3,3.9 3,5v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2V5C21,3.9 20.1,3 19,3zM10,15H8.5v-4.5H7V9h3V15zM16,14c0,0.55 -0.45,1 -1,1h-2.5c-0.55,0 -1,-0.45 -1,-1v-4c0,-0.55 0.45,-1 1,-1H15c0.55,0 1,0.45 1,1V14z&quot;/>"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_total_item_count.xml"
+            line="7"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Use of this function is discouraged because resource reflection makes it harder to perform build optimizations and compile-time verification of code. It is much more efficient to retrieve resources by identifier (e.g. `R.foo.bar`) than by name (e.g. `getIdentifier(&quot;bar&quot;, &quot;foo&quot;, null)`)."
+        errorLine1="        val id = iconResources.getIdentifier(drawableName, &quot;drawable&quot;, packageName);"
+        errorLine2="                               ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/ds/simple/ink/launcher/apps/IconsTheme.java"
+            line="87"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="UseCompatLoadingForDrawables"
+        message="Use `ResourcesCompat.getDrawable()`"
+        errorLine1="        return execute(() -> iconResources.getDrawable(id));"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/ds/simple/ink/launcher/apps/IconsTheme.java"
+            line="88"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="UseCompatLoadingForDrawables"
+        message="Use `ResourcesCompat.getDrawable()`"
+        errorLine1="                .icon(resources.getDrawable(R.drawable.ic_icons_theme))"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/ds/simple/ink/launcher/apps/IconsThemeRepository.java"
+            line="79"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;show_clock_title&quot; is not translated in &quot;ru&quot; (Russian) or &quot;pl&quot; (Polish)"
+        errorLine1="    &lt;string name=&quot;show_clock_title&quot;>Show clock&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/settings.xml"
+            line="99"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;show_clock_summary&quot; is not translated in &quot;ru&quot; (Russian) or &quot;pl&quot; (Polish)"
+        errorLine1="    &lt;string name=&quot;show_clock_summary&quot;>Add clock to launcher toolbar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/settings.xml"
+            line="100"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;show_battery_level_title&quot; is not translated in &quot;ru&quot; (Russian) or &quot;pl&quot; (Polish)"
+        errorLine1="    &lt;string name=&quot;show_battery_level_title&quot;>Show battery level&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/settings.xml"
+            line="104"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;show_battery_level_summary&quot; is not translated in &quot;ru&quot; (Russian) or &quot;pl&quot; (Polish)"
+        errorLine1="    &lt;string name=&quot;show_battery_level_summary&quot;>Add battery level to launcher toolbar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/settings.xml"
+            line="105"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;show_total_item_count_title&quot; is not translated in &quot;ru&quot; (Russian) or &quot;pl&quot; (Polish)"
+        errorLine1="    &lt;string name=&quot;show_total_item_count_title&quot;>Show total item count&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/settings.xml"
+            line="109"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;show_total_item_count_summary&quot; is not translated in &quot;ru&quot; (Russian) or &quot;pl&quot; (Polish)"
+        errorLine1="    &lt;string name=&quot;show_total_item_count_summary&quot;>Add total item count to launcher toolbar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/settings.xml"
+            line="110"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MergeRootFrame"
+        message="This `&lt;FrameLayout>` can be replaced with a `&lt;merge>` tag"
+        errorLine1="&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/settings.xml"
+            line="20"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `?android:attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/AppTheme`)"
+        errorLine1="    android:background=&quot;?android:attr/selectableItemBackground&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/preference_custom.xml"
+            line="29"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
+        errorLine1="    android:paddingEnd=&quot;?android:listPreferredItemPaddingEnd&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/preference_custom.xml"
+            line="27"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingRight` you should probably also define `paddingLeft` for right-to-left symmetry"
+        errorLine1="    android:paddingRight=&quot;?android:listPreferredItemPaddingRight&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/preference_custom.xml"
+            line="28"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
+        errorLine1="    android:paddingEnd=&quot;?android:attr/listPreferredItemPaddingEnd&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/seekbar_preference_custom.xml"
+            line="29"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingRight` you should probably also define `paddingLeft` for right-to-left symmetry"
+        errorLine1="    android:paddingRight=&quot;?android:attr/listPreferredItemPaddingRight&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/seekbar_preference_custom.xml"
+            line="30"
+            column="5"/>
+    </issue>
+
+</issues>
