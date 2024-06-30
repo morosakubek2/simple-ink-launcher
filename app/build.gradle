@@ -70,19 +70,19 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     // Lombok
     //noinspection AnnotationProcessorOnCompilePath we actually need this
-    compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
     //noinspection AnnotationProcessorOnCompilePath we actually need this
-    testCompileOnly 'org.projectlombok:lombok:1.18.30'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
     // Third-party
     //noinspection GradleDependency we want the android variant
     implementation 'com.google.guava:guava:27.1-android'
     // Testing
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.28.2'
-    testImplementation 'org.robolectric:robolectric:4.11.1'
-    testImplementation 'org.hamcrest:hamcrest-library:1.3'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.12.0'
+    testImplementation 'org.robolectric:robolectric:4.12.2'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
     //noinspection GradleDependency later versions require multidex
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-alpha-2'
 }
