@@ -138,7 +138,6 @@ public class IconsThemeRepository implements ApplicationSettings.OnIconsThemeCha
     /**
      * Registers a listener which will be notified when new icons theme is loaded.
      */
-    @SuppressWarnings("ConstantConditions")
     public void registerOnIconsThemeLoadListener(@NonNull final OnIconsThemeLoadedListener listener) {
         listeners.put(listener, null);
     }

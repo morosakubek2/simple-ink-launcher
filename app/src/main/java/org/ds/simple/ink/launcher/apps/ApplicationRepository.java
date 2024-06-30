@@ -138,7 +138,6 @@ public final class ApplicationRepository implements IconsThemeRepository.OnIcons
     /**
      * Registers a listener which will be notified when application cache is reloaded.
      */
-    @SuppressWarnings("ConstantConditions")
     public void registerCacheUpdateListener(@NonNull final OnCacheUpdateListener listener) {
         listeners.put(listener, null);
     }

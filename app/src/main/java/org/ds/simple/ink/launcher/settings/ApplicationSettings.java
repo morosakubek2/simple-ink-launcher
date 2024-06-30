@@ -308,27 +308,22 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         return SortingStrategyName.valueOf(sharedPreferences.getString(sortingStrategyKey, sortingStrategyDefault));
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerIconsThemeChangeListener(@NonNull final OnIconsThemeChangeListener listener) {
         iconsThemeChangeListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerSortingStrategyChangeListener(@NonNull final OnSortingStrategyChangeListener listener) {
         sortingStrategyListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerWifiSwitchEnabledChangeListener(@NonNull final OnWifiSwitchEnabledChangeListener listener) {
         wifiSwitchEnabledChangeListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerBacklightSwitchEnabledChangeListener(@NonNull final OnBacklightSwitchEnabledChangeListener listener) {
         backlightSwitchEnabledChangeListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerClockEnabledChangeListener(@NonNull final OnClockEnabledChangeListener listener) {
         clockEnabledChangeListeners.put(listener, null);
     }
@@ -337,22 +332,18 @@ public class ApplicationSettings implements SharedPreferences.OnSharedPreference
         batteryLevelEnabledChangeListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerTotalItemCountEnabledChangeListener(@NonNull final OnTotalItemCountEnabledChangeListener listener) {
         totalItemCountEnabledChangeListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerHideApplicationsChangeListener(@NonNull final OnHideApplicationsChangeListener listener) {
         hideApplicationsChangeListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerToolbarLocationChangeListener(@NonNull final OnToolbarLocationChangeListener listener) {
         toolbarLocationChangeListeners.put(listener, null);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerMainScreenPreferencesChangeListener(@NonNull final OnMainScreenSettingsChangeListener listener) {
         mainScreenSettingsChangeListeners.put(listener, null);
     }

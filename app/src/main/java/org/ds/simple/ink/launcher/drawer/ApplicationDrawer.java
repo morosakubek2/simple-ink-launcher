@@ -154,7 +154,6 @@ public class ApplicationDrawer extends GridView implements ActivityTypeAware,
         applyMainScreenPreferences(newPreferences);
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void registerOnTotalCountChangeListener(@NonNull final OnTotalItemCountChangeListener listener) {
         listeners.put(listener, null);
     }
