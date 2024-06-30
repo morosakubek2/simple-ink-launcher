@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.os.BatteryManager;
 import android.net.wifi.WifiManager;
+import android.os.Debug;
 
 
 import androidx.preference.PreferenceManager;
@@ -52,7 +53,7 @@ public class LauncherApplication extends Application {
         super.onCreate();
 
         // Only included in debug because we don't restart after the crash
-        if (BuildConfig.BUILD_TYPE == "debug") {
+        if (BuildConfig.BUILD_TYPE.equals("debug") && !Debug.isDebuggerConnected()) {
             Thread.setDefaultUncaughtExceptionHandler(new CrashHandler());
         }
 
