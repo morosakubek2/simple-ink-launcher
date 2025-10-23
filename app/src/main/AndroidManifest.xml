@@ -20,12 +20,42 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Podstawowe uprawnienia -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
+
+    <!-- Dla Android 11+ - aby widzieć wszystkie zainstalowane aplikacje -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- Dodatkowe przydatne uprawnienia -->
+    
+    <!-- Pozwala na ustawianie tapety (jeśli chcesz tę funkcję) -->
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
+    
+    <!-- Sprawdzanie uruchomionych aplikacji (dla zaawansowanych funkcji) -->
+    <uses-permission android:name="android.permission.GET_TASKS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    
+    <!-- Wibracje przy dotykaniu -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- Zarządzanie jasnością ekranu -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    
+    <!-- Autostart po uruchomieniu urządzenia -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
+    <!-- Wyłączanie ekranu (dla czytników e-ink) -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:theme="@style/AppTheme"
@@ -34,13 +64,19 @@
         android:name=".LauncherApplication"
         android:allowBackup="true"
         android:supportsRtl="true"
-        tools:ignore="GoogleAppIndexingWarning"
-        >
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:resizeableActivity="true"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
             android:name=".LauncherMainActivity"
             android:launchMode="singleTask"
-            android:exported="true">
+            android:exported="true"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="unspecified"
+            android:configChanges="orientation|screenSize|keyboardHidden">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,15 +84,60 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            
+            <!-- Obsługa menu "Udostępnij" - otwiera launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+            <!-- Reakcja na skróty aplikacji (Android 7.1+) -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
         <activity
             android:name=".LauncherSettingsActivity"
-            android:parentActivityName=".LauncherMainActivity"/>
+            android:parentActivityName=".LauncherMainActivity"
+            android:exported="false"/>
 
         <activity
             android:name=".MainScreenSettingsActivity"
-            android:parentActivityName=".LauncherSettingsActivity"/>
+            android:parentActivityName=".LauncherSettingsActivity"
+            android:exported="false"/>
+
+        <!-- Receiver dla autostartu po włączeniu urządzenia -->
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Receiver dla zmian w zainstalowanych aplikacjach -->
+        <receiver
+            android:name=".PackageChangeReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Backup agent (opcjonalny) -->
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAI..." />
 
     </application>
+
 </manifest>
