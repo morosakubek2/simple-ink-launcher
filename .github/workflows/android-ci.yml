@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - 'v*.*.*'  # uruchamia się przy puszczeniu taga np. v1.0.0
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -26,8 +26,14 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
-      - name: List APK files
-        run: ls -l app/build/outputs/apk/release/
+      - name: Debug APK existence
+        run: find app/build/outputs -type f -name "*.apk"
+
+      - name: Upload APK as artifact (for debugging)
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-debug
+          path: app/build/outputs/apk/release/*.apk
 
       - name: Run Unit Tests
         run: ./gradlew testReleaseUnitTest
@@ -37,7 +43,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          files: app/build/outputs/apk/release/app-release.apk  # <- zaktualizuj, jeśli inna nazwa pliku
+          files: app/build/outputs/apk/release/*.apk
           draft: false
           prerelease: false
         env:
